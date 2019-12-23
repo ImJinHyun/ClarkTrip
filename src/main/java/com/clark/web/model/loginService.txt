@@ -1,0 +1,114 @@
+package tpl.services;
+
+import java.net.MalformedURLException;
+import java.security.NoSuchAlgorithmException;
+import java.util.Date;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+import lombok.extern.slf4j.Slf4j;
+import me.saro.commons.Converter;
+import me.saro.commons.DateFormat;
+import me.saro.commons.converter.HashAlgorithm;
+import tpl.dao.AdmUserDao;
+import tpl.util.IdmsValidator;
+import tpl.util.IdmsValidator.IdmsResult;
+
+import javax.servlet.http.HttpServletRequest;
+
+/**
+ * 어드민 유저 서비스 2017-03-21 박용서 작성
+ */
+@Component
+@Slf4j
+public class UserLoginService {
+
+    @Autowired AdmUserDao userDao;
+    @Autowired IdmsService idmsService;
+    @Autowired HttpServletRequest request;
+    @Value("${service.env}") String env;
+
+    // 로그인 암호 교체 유효기간
+    final static long LOGIN_PWD_CHG_EXP = (90L * 86400000L);
+
+    final static String LOGIN_STATE_LOCK = "L";
+    
+    /** 로그인 여부 [정상 null 비정상 msg] */
+    public Map<String, String> doLogin(String ac, String pw, String npw, String ip, UserService userDetails)
+            throws NoSuchAlgorithmException, MalformedURLException {
+        
+        var user = userDao.selectUserByAc(ac);
+        if (user != null) {
+            
+            if (LOGIN_STATE_LOCK.equals(user.getState())) {
+                return Converter.toMap("cd", "ERROR", "msg", "계정이 잠겼습니다.");
+            }
+            if (new Date().after(user.getAcExpDt())) {
+                return Converter.toMap("cd", "ERROR", "msg", "유효기간이 만료된 계정입니다.");
+            }
+            
+            if (user.getPw().equals(Converter.toHashHex(HashAlgorithm.SHA3_512, pw))) {
+                
+                IdmsResult idms = IdmsValidator.validate(env, IdmsService.TPL_ADMIN_SYS_ID, ac, ip);
+                
+                if (idms.isNotValid()) {
+                    if (!idms.isNetworkError()) {
+                        log.info("로그인 -> idms 오류 " + ac + " / " + idms);
+                        return Converter.toMap("cd", "ERROR", "msg", idms.getMsg());
+                    }
+                    log.info("로그인 -> idms 네트워크 오류 통과 " + ac);
+                } else {
+                    log.info("로그인 -> idms 통과 " + ac);
+                }
+
+                if (npw != null && npw.length() >= 8) {
+                    log.info("로그인 -> 암호 교체");
+                    user.setPw(Converter.toHashHex(HashAlgorithm.SHA3_512, npw));
+                    user.setPwExpDt(DateFormat.now().addDates(90).toDate());
+                    userDao.updateUserPw(user);
+                } else if (System.currentTimeMillis() > user.getPwExpDt().getTime()) {
+                    // 암호 변경 필요.
+                    log.info("암호 변경 필요.");
+                    return Converter.toMap("cd", "EXP_PW", "msg", "암호 변경 후 90일이 지나 암호가 만료되었습니다.");
+                }
+
+                // 로그인 성공
+                log.info("로그인 -> 성공");
+                user.setLoginTryCnt(0);
+                user.setLastLoginDt(new Date());
+                user.setSessionId(request.getSession().getId());
+                log.info("로그인 입력 : " + user.toString());
+                userDao.updateUser(user);
+                userDetails.setUser(user);
+                userDetails.setLogIdmsLogin(idmsService.insertLoginLog(user, ip));
+                
+                return Converter.toMap("cd", "OK");
+            } else {
+                int tryCount = user.getLoginTryCnt() + 1;
+                if (tryCount >= 5) {
+                    user.setState(LOGIN_STATE_LOCK);
+                }
+                user.setLoginTryCnt(tryCount);
+                userDao.updateUser(user);
+            }
+        }
+
+        return Converter.toMap("cd", "ERROR", "msg", "아이디 혹은 비밀번호가 일치하지 않습니다.");
+    }
+    
+    public <A, B> Map<A, B> doLogout(UserService userDetails) {
+        idmsService.insertLogoutLog(userDetails);
+        return Map.of();
+    }
+ <!-- 페이지 관련 -->
+    <sql id="_devo_page_head"> SELECT * FROM ( SELECT page_target_table_p1.*, ROWNUM AS
+        PAGE_RNUM FROM (SELECT ROWNUM AS ROW_NO, page_target_table.*, count(*) over()
+        PAGE_CNT_TOTAL FROM ( </sql>
+    <sql id="_devo_page_tail"> ) page_target_table ORDER BY ROW_NO) page_target_table_p1 WHERE
+        #{page_now} * #{page_unit} >= ROWNUM) WHERE PAGE_RNUM > (#{page_now} -
+        1) * #{page_unit} </sql>
+    <!-- 페이지 관련 -->
+}

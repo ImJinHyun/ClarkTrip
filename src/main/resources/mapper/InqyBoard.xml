@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="inqyBoard">
+ 
+ <!-- 페이지 관련 -->
+    <sql id="_devo_page_head"> SELECT * FROM ( SELECT page_target_table_p1.*, ROWNUM AS
+        PAGE_RNUM FROM (SELECT ROWNUM AS ROW_NO, page_target_table.*, count(*) over()
+        PAGE_CNT_TOTAL FROM ( </sql>
+        
+    <sql id="_devo_page_tail"> ) page_target_table ORDER BY ROW_NO) page_target_table_p1 WHERE
+        #{page_now} * #{page_unit} >= ROWNUM) WHERE PAGE_RNUM > (#{page_now} -
+        1) * #{page_unit} </sql>
+    <!-- 페이지 관련 -->
+    <select id="getDual" resultType="java.util.HashMap">
+        SELECT * FROM test_board
+    </select>
+    
+    <select id="selectInqyBoard" parameterType="com.clark.web.model.Search" resultType="java.util.HashMap">
+    	select a.* from (
+    	SELECT * FROM inqy_board
+    	where lang = #{lang}
+    	) a 
+    	order by reg_dt desc
+    	limit  #{page_now}, #{page_unit}
+    </select>
+    
+    <select id="selectCountList" parameterType="com.clark.web.model.Search" resultType="java.lang.Integer">
+    	SELECT COUNT(*) FROM
+    	inqy_board
+    	WHERE 1=1
+    	<if test="subject != null and subject != '' " >
+    	AND SUBJECT like  CONCAT(‘%’, #{subject}, ‘%’)
+    	</if>	
+    </select>
+	
+	<select id="selectInqyView" parameterType="com.clark.web.model.InqyModel" resultType="com.clark.web.model.InqyModel">
+		SELECT * FROM inqy_board
+		WHERE BOARD_no = #{board_no}
+	</select>	
+	 
+ 	<insert id="insertInqyBoard" parameterType="com.clark.web.model.InqyModel">
+    insert into inqy_board (
+    firstname, lastname, email, subject, content, lang, reg_dt
+    ) values (
+    #{firstName}, #{lastName}, #{email}, #{subject}, #{content}, #{lang}, now()
+    )    
+    </insert>
+    
+   <update id="updateInqyBoard" parameterType="com.clark.web.model.InqyModel">
+    UPDATE inqy_board SET
+    SUBJECT = #{subject} ,
+    CONTENT = #{content}
+    WHERE 1=1
+    AND BOARD_NO = #{board_no}
+    </update>
+    
+    <delete id ="deleteInqyBoard" parameterType="java.util.HashMap">
+    DELETE FROM inqy_board
+    WHERE 1=1
+    AND BOARD_NO = #{boardNo}
+    </delete>
+ 
+ 
+</mapper>
+
+

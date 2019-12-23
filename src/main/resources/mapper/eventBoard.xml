@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="eventBoard">
+ 
+ <!-- 페이지 관련 -->
+    <sql id="_devo_page_head"> SELECT * FROM ( SELECT page_target_table_p1.*, ROWNUM AS
+        PAGE_RNUM FROM (SELECT ROWNUM AS ROW_NO, page_target_table.*, count(*) over()
+        PAGE_CNT_TOTAL FROM ( </sql>
+        
+    <sql id="_devo_page_tail"> ) page_target_table ORDER BY ROW_NO) page_target_table_p1 WHERE
+        #{page_now} * #{page_unit} >= ROWNUM) WHERE PAGE_RNUM > (#{page_now} -
+        1) * #{page_unit} </sql>
+    <!-- 페이지 관련 -->
+    
+    <select id="getDual" resultType="java.util.HashMap">
+        SELECT * FROM test_board
+    </select>
+    
+    <select id="selectEventBoard" parameterType="com.clark.web.model.Search" resultType="java.util.HashMap">
+    	select a.* from (
+    	SELECT * FROM event_board 
+    	WHERE EVENT_YN = #{event_Yn}
+    	AND lang = #{lang}
+    	) a 
+    	order by reg_dt desc
+    	limit  #{page_now}, #{page_unit}
+    </select>
+    
+    <select id="selectCountList" parameterType="com.clark.web.model.Search" resultType="java.lang.Integer">
+    	SELECT COUNT(*) FROM
+    	event_board
+    	WHERE 1=1
+    	<if test="subject != null and subject != '' " >
+    	AND SUBJECT like  CONCAT(‘%’, #{subject}, ‘%’)
+    	</if>	
+    </select>
+	
+	<select id="selectEventView" parameterType="com.clark.web.model.BoardModel" resultType="com.clark.web.model.BoardModel">
+		SELECT * FROM event_board
+		WHERE BOARD_no = #{board_no}
+	</select>	
+	 
+ 	<insert id="insertEventBoard" parameterType="com.clark.web.model.BoardModel">
+    insert into event_board (
+    board_id, subject, content, name, id, reg_dt, event_Yn, lang
+    ) values (
+    #{board_id}, #{subject}, #{content}, #{name}, #{id}, now(), #{event_Yn}, #{lang}
+    )    
+    </insert>
+    
+   <update id="updateEventBoard" parameterType="com.clark.web.model.BoardModel">
+    UPDATE event_board SET
+    SUBJECT = #{subject} ,
+    CONTENT = #{content}
+    WHERE ID = #{id}
+    AND BOARD_NO = #{board_no}
+    </update>
+    
+    <delete id ="deleteEventBoard" parameterType="java.util.HashMap">
+    DELETE FROM event_board
+    WHERE ID = #{userId}
+    AND BOARD_NO = #{boardNo}
+    </delete>
+ 
+ 
+</mapper>
+
+

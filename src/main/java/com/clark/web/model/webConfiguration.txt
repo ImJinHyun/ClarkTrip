@@ -1,0 +1,297 @@
+package tpl.configurations;
+
+import java.net.URLEncoder;
+import java.util.Optional;
+
+import javax.servlet.Filter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import lombok.extern.slf4j.Slf4j;
+import tpl.dao.AdmUserDao;
+import tpl.services.IdmsService;
+import tpl.services.MenuService;
+import tpl.services.UserService;
+
+@Configuration
+@EnableAutoConfiguration @Slf4j
+public class WebConfiguration implements WebMvcConfigurer  {
+    
+    @Value("${service.env}") String env;
+    @Value("${path.nas.webroot}") String nasWebRoot;
+    @Value("${webpath.nas}") String webNasRoot;
+    
+    @Autowired ApplicationContext context;
+    @Autowired MenuService menuService;
+    @Autowired UserService userService;
+    @Autowired IdmsService idmsService;
+    @Autowired AdmUserDao admUserDao;
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
+        
+        if ("local".equals(env)) {
+            registry.addResourceHandler(webNasRoot+"**").addResourceLocations("file:///"+nasWebRoot);
+        }
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(authInterceptor());
+        registry.addInterceptor(menuInterceptor());
+        registry.addInterceptor(noCacheInterceptor());
+    }
+
+    public HandlerInterceptor authInterceptor() {
+        return new HandlerInterceptor() {
+            @Override
+            public boolean preHandle(HttpServletRequest req, HttpServletResponse res, Object handler) throws Exception {
+
+                String path = req.getServletPath();
+                
+                // 리소스
+                if (path.startsWith("/res/") || path.startsWith("/error") || path.startsWith("/healthcheck.jsp") || path.startsWith("/validationQuery") || path.startsWith("/logout")) {
+                    return true;
+                }
+
+                // 로그인 여부로 이동
+                if (userService.isLogin(admUserDao)) {
+                    if (path.startsWith("/login")) {
+                        res.sendRedirect("/");
+                        return false;
+                    }
+                    
+                    if (!(path.equals("/") || path.startsWith("/api/pub/"))) {
+                        if (!menuService.getMenuMap(userService.getUser()).stream().filter(e -> path.startsWith(e.getItemPath())).findFirst().isPresent()) {
+                            log.info("인가되지 않은 메뉴접근 : " + path);
+                            log.info(menuService.getMenuMap(userService.getUser()).toString());
+                            res.setStatus(403);
+                            return false;
+                        }
+                    }
+                } else {
+                    if (!path.startsWith("/login")) {
+                        if ("GET".equals(req.getMethod())) {
+                            res.sendRedirect("/login?url=" + URLEncoder.encode(path, "UTF-8"));
+                        } else {
+                            res.setStatus(403);
+                        }
+                        return false;
+                    }
+                }
+                
+                // IDMS 등록
+                if (!path.startsWith("/res/") && !path.startsWith("/error/")) {
+                    idmsService.insertViewLog(userService.getUser(), path, req.getLocalAddr(), req.getRemoteAddr());
+                }
+
+                return true;
+            }
+        };
+    }
+
+    public HandlerInterceptor menuInterceptor() {
+        return new HandlerInterceptor() {
+
+            @Override
+            public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
+                    ModelAndView modelAndView) {
+                if (modelAndView != null) {
+                    modelAndView.addObject("_USER_NAME", Optional.ofNullable(userService.getUser()).map(e -> e.getUserNm()).orElse(""));
+                    modelAndView.addObject("_MENU", menuService.getMenuMap(userService.getUser()));
+                    // menuService.getMenuGroupList().collect(Collectors.toList()));
+                }
+            }
+        };
+    }
+
+    public HandlerInterceptor noCacheInterceptor() {
+        return new HandlerInterceptor() {
+            @Override
+            public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
+                    ModelAndView modelAndView) {
+                response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+                response.setHeader("Pragma", "no-cache");
+                response.setHeader("Expires", "0");
+                response.setHeader("Referrer-Policy", "origin");
+            }
+        };
+    }
+
+    @Bean
+    public Filter getCharacterEncodingFilter() {
+        org.springframework.web.filter.CharacterEncodingFilter characterEncodingFilter = new org.springframework.web.filter.CharacterEncodingFilter();
+        characterEncodingFilter.setEncoding("UTF-8");
+        characterEncodingFilter.setForceEncoding(true);
+        return characterEncodingFilter;
+    }
+}
+package tpl.configurations;
+
+import java.net.URLEncoder;
+import java.util.Optional;
+
+import javax.servlet.Filter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import lombok.extern.slf4j.Slf4j;
+import tpl.dao.AdmUserDao;
+import tpl.services.IdmsService;
+import tpl.services.MenuService;
+import tpl.services.UserService;
+
+@Configuration
+@EnableAutoConfiguration @Slf4j
+public class WebConfiguration implements WebMvcConfigurer  {
+    
+    @Value("${service.env}") String env;
+    @Value("${path.nas.webroot}") String nasWebRoot;
+    @Value("${webpath.nas}") String webNasRoot;
+    
+    @Autowired ApplicationContext context;
+    @Autowired MenuService menuService;
+    @Autowired UserService userService;
+    @Autowired IdmsService idmsService;
+    @Autowired AdmUserDao admUserDao;
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
+        
+        if ("local".equals(env)) {
+            registry.addResourceHandler(webNasRoot+"**").addResourceLocations("file:///"+nasWebRoot);
+        }
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(authInterceptor());
+        registry.addInterceptor(menuInterceptor());
+        registry.addInterceptor(noCacheInterceptor());
+    }
+
+    public HandlerInterceptor authInterceptor() {
+        return new HandlerInterceptor() {
+            @Override
+            public boolean preHandle(HttpServletRequest req, HttpServletResponse res, Object handler) throws Exception {
+
+                String path = req.getServletPath();
+                
+                // 리소스
+                if (path.startsWith("/res/") || path.startsWith("/error") || path.startsWith("/healthcheck.jsp") || path.startsWith("/validationQuery") || path.startsWith("/logout")) {
+                    return true;
+                }
+
+                // 로그인 여부로 이동
+                if (userService.isLogin(admUserDao)) {
+                    if (path.startsWith("/login")) {
+                        res.sendRedirect("/");
+                        return false;
+                    }
+                    
+                    if (!(path.equals("/") || path.startsWith("/api/pub/"))) {
+                        if (!menuService.getMenuMap(userService.getUser()).stream().filter(e -> path.startsWith(e.getItemPath())).findFirst().isPresent()) {
+                            log.info("인가되지 않은 메뉴접근 : " + path);
+                            log.info(menuService.getMenuMap(userService.getUser()).toString());
+                            res.setStatus(403);
+                            return false;
+                        }
+                    }
+                } else {
+                    if (!path.startsWith("/login")) {
+                        if ("GET".equals(req.getMethod())) {
+                            res.sendRedirect("/login?url=" + URLEncoder.encode(path, "UTF-8"));
+                        } else {
+                            res.setStatus(403);
+                        }
+                        return false;
+                    }
+                }
+                
+                // IDMS 등록
+                if (!path.startsWith("/res/") && !path.startsWith("/error/")) {
+                    idmsService.insertViewLog(userService.getUser(), path, req.getLocalAddr(), req.getRemoteAddr());
+                }
+
+                return true;
+            }
+        };
+    }
+
+    public HandlerInterceptor menuInterceptor() {
+        return new HandlerInterceptor() {
+
+            @Override
+            public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
+                    ModelAndView modelAndView) {
+                if (modelAndView != null) {
+                    modelAndView.addObject("_USER_NAME", Optional.ofNullable(userService.getUser()).map(e -> e.getUserNm()).orElse(""));
+                    modelAndView.addObject("_MENU", menuService.getMenuMap(userService.getUser()));
+                    // menuService.getMenuGroupList().collect(Collectors.toList()));
+                }
+            }
+        };
+    }
+
+    public HandlerInterceptor noCacheInterceptor() {
+        return new HandlerInterceptor() {
+            @Override
+            public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
+                    ModelAndView modelAndView) {
+                response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+                response.setHeader("Pragma", "no-cache");
+                response.setHeader("Expires", "0");
+                response.setHeader("Referrer-Policy", "origin");
+            }
+        };
+    }
+
+    @Bean
+    public Filter getCharacterEncodingFilter() {
+        org.springframework.web.filter.CharacterEncodingFilter characterEncodingFilter = new org.springframework.web.filter.CharacterEncodingFilter();
+        characterEncodingFilter.setEncoding("UTF-8");
+        characterEncodingFilter.setForceEncoding(true);
+        return characterEncodingFilter;
+    }
+}
+
+// 로그인 페이지 ->로그인컨트롤러 -> 로그인 하는곳으로 ㅇ ㅣ동 (userLoginService.doLogin(Ajax) -> 서비스에서 계정정보 불러옴, 기간, 잠겼는지 차례로 검사 후 리턴 false -> true 비번검사 true, -> 비번 만료기간 검사  true(알럿 만료되었음 리턴) -> 
+->로그인 성공시
+ // 로그인 성공
+                log.info("로그인 -> 성공");
+                user.setLoginTryCnt(0);
+                user.setLastLoginDt(new Date());
+                user.setSessionId(request.getSession().getId());
+                log.info("로그인 입력 : " + user.toString());
+                userDao.updateUser(user);
+                userDetails.setUser(user);
+                userDetails.setLogIdmsLogin(idmsService.insertLoginLog(user, ip)); 
+                
+                
+                return Converter.toMap("cd", "OK");
