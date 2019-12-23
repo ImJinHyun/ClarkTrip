@@ -289,48 +289,48 @@ zu Zulu
             <nav class="site-navigation text-right text-md-center" role="navigation">
               <ul class="site-menu js-clone-nav d-none d-lg-block">
               
-              	<li class="has-children">
-                  <a href="#">About</a>
-                  <ul class="dropdown">
+              	<li class="site-menu">
+                  <a href="#">회사소개</a>
+                  <!-- <ul class="dropdown">
                     <li><a href="/company/CEO">CEO Greeting</a></li>
                     <li><a href="/company/Executive">Executive</a></li>
                     <li><a href="/company/contact">Way to Come</a></li>
-                  </ul>
+                  </ul> -->
                 </li>
                  
-              	<li class="has-children">
-                  <a href="#">Item Discription</a>
-                  <ul class="dropdown">
+              	<li class="site-menu">
+                  <a href="#">이용후기</a>
+                  <!-- <ul class="dropdown">
                     <li><a href="/introduceFizyme?board_no=0">FI-ZYME</a></li>
                     <li><a href="/introduceFizyme?board_no=1">FERMENTED RED GINSENG</a></li>
                     <li><a href="/introduceFizyme?board_no=2">INCELLDERM</a></li>
-                  </ul>
+                  </ul> -->
                 </li>
                 
-                <li class="has-children">
-                  <a href="#">Community</a>
-                  <ul class="dropdown">
+                <li class="site-menu">
+                  <a href="#">견적문의</a>
+                 <!--  <ul class="dropdown">
                     <li><a href="/community/newsBoardList">News</a></li>
                     <li><a href="/community/afterBoardList">Product Reviews</a></li>
                     <li><a href="/community/movieBoardList">Videos</a></li>
-                  </ul>
+                  </ul> -->
                 </li>
                 
-                <li class="has-children">
-                  <a href="#">Event</a>
-                  <ul class="dropdown">
+                <li class="site-menu">
+                  <a href="#">상품소개</a>
+                  <!-- <ul class="dropdown">
                     <li><a href="/event/eventBoardList">Current Event</a></li>
                     <li><a href="/event/eventBoardListEnd">Completed Event</a></li>
-                  </ul>
+                  </ul> -->
                 </li>
-                	<li class="has-children">
-                  <a href="#">Customer Service</a>
-                  <ul class="dropdown">
+                	<li class="site-menu">
+                  <a href="#">고객센터</a>
+                <!--   <ul class="dropdown">
                     <li><a href="/customer/noticeBoardList">Notice</a></li>
                     <li><a href="/customer/faqBoardList">FAQ</a></li>
                     <li><a href="/customer/buyBoardList">Purchase</a></li>
                     <li><a href="/customer/inqyBoardList">Inquiry</a></li>
-                  </ul>
+                  </ul> -->
                 </li>
 
               </ul>
