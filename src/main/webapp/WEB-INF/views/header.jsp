@@ -316,12 +316,21 @@ zu Zulu
                   </ul> -->
                 </li>
                 
-                <li class="site-menu">
+                <li class="has-children">
                   <a href="#">상품소개</a>
-                  <!-- <ul class="dropdown">
-                    <li><a href="/event/eventBoardList">Current Event</a></li>
-                    <li><a href="/event/eventBoardListEnd">Completed Event</a></li>
-                  </ul> -->
+                 <ul class="dropdown">
+                    <li><a href="/event/eventBoardList">호텔골프패키지 (2인 1실)</a></li>
+                    <li><a href="/event/eventBoardListEnd">호텔골프패키지 (1인 1실)</a></li>
+                    <li><a href="/event/eventBoardListEnd">풀빌라골프패키지(1인 1실)</a></li>
+                    <li><a href="/event/eventBoardListEnd">가족여행패키지</a></li>
+                    <li><a href="/event/eventBoardListEnd">실속골프패키지</a></li>
+                    <li><a href="/event/eventBoardListEnd">1인자유여행패키지</a></li>
+                    <li><a href="/event/eventBoardListEnd">최고급골프패키지</a></li>
+                    <li><a href="/event/eventBoardListEnd">단기어학연수패키지</a></li>
+                    <li><a href="/event/eventBoardListEnd">클락·앙헬레스 한달 패키지</a></li>
+                    <li><a href="/event/eventBoardListEnd">무제한 황제 VIP패키지</a></li>
+                    <li><a href="/event/eventBoardListEnd">밤문화투어 패키지</a></li>
+                  </ul>
                 </li>
                 	<li class="site-menu">
                   <a href="#">고객센터</a>

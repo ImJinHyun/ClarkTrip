@@ -6,13 +6,13 @@
           <div class="col-md-12 col-lg-12 mb-12 mb-lg-12">
 
             <div class="block-7 footer-bottom">
-	              <img class="footer-heading mb-4" alt="logo" src="/images/aurance/logo_bottom.jpg" style="width:100px; height:100px;"></h3>
+	              <!-- <img class="footer-heading mb-4" alt="logo" src="/images/aurance/logo_bottom.jpg" style="width:100px; height:100px;"></h3>-->
 	              <p>
-					· Evan’s Health and Beauty Products Trading&nbsp;&nbsp;&nbsp;&nbsp;· CEO Jung-yeon Jo&nbsp;&nbsp;&nbsp;&nbsp;· CALL 0000-000-0000
+					· ㈜두리투어 &nbsp;&nbsp;&nbsp;&nbsp;· 대표 임진현&nbsp;&nbsp;&nbsp;&nbsp;· 주소 : 
 	              
 	              <br>
 	              
-					· 304 SILVERLING Bld. 216 Fil-Am Friendship Hwy, Angeles, Pampanga
+					· 사업자 등록번호&nbsp;&nbsp;&nbsp;&nbsp;· 통신판매업 신고번호&nbsp;&nbsp;&nbsp;&nbsp; · 관광사업자 등록번호
 				  
 				  <br>
 					<!-- · 사업자등록번호 397-87-00531<a href="http://www.ftc.go.kr/info/bizinfo/communicationView.jsp?apv_perm_no=2017312018330200534&area1=&area2=&currpage=1&searchKey=04&searchVal=3978700531&stdate=&enddate=" target="_blank">사업자정보확인</a>&nbsp;&nbsp;&nbsp;&nbsp;· 통신판매업 신고번호 2017-서울서대문-0534 -->
