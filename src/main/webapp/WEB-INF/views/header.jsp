@@ -282,7 +282,7 @@ zu Zulu
         <div class="d-flex align-items-center justify-content-between">
           <div class="logo">
             <div class="site-logo">
-              <a href="/"><img src="/images/aurance/top_logo2_1.jpg" style="width:100px; height:100px;"></a>
+              <a href="/"><img src="/images/aurance/top_logo.png" style="width:100px; height:100px;"></a>
             </div>
           </div>
           <div class="main-nav d-none d-lg-block">
