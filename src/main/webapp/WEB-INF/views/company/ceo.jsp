@@ -63,18 +63,18 @@ color: #d2c8a3 !important;
           <div class="col-md-6">
             <div class="block-16">
               <figure style="margin:auto;">
-                <img src="/images/aurance/ceo03.jpg" alt="Image placeholder" class="img-fluid rounded" style="width:100%">    
+                <img src="/images/clarktrip/main_sub1.jpg" alt="Image placeholder" class="img-fluid rounded" style="width:100%">    
               </figure>
             </div>
           </div>
           <div class="col-md-6">
     
             <div class="site-section-heading pt-3 mb-4">
-              <h2 class="text-black">Jung-yeon Jo CEO</h2>
+              <h2 class="text-black">골프패키지	</h2>
             </div>
             
             <div>
-            	<h5 style="font-weight:bold; color:#5773bd;">Hello.</h5>
+            	<h5 style="font-weight:bold; color:#5773bd;">안녕하세요.</h5>
             	<h5 style="font-weight:bold; color:#000;">I am Jung-yeon Jo, CEO of EVAN ’S HEALTH & BEAUTY Product Trading.</h5>
             </div>
             <p>First of all, thank you for visiting our company. <br/>

@@ -65,7 +65,7 @@
             <p>된 옥 아직 버리었습니다. 이런 아무 나의 별을 별 하늘에는 소녀들의 마디씩 거외다. 말 별 추억과 노새, 묻힌 버리었습니다.</p>
             <p>아직 겨울이 마리아 아이들의 하나에 아스라히 아무 듯합니다. 별을 이런 멀듯이, 토끼, 거외다.</p>
                         <hr class="short">
-            <p><a href="/introduceFizyme?board_no=0" ><font  style="color:#ffa84b;">Read more</font></a></p>
+            <p><a href="/introduceFizyme?board_no=0" ><font  style="color:#ffa84b;">자세히보기</font></a></p>
           </div>
           
         </div>
@@ -83,7 +83,7 @@
 				<p class="text-black">하였으며, 산야에 천지는 관현악이며, 부패뿐이다. 우는 스며들어 방황하여도, 유소년에게서 현저하게 때에, 봄바람이다. 꾸며 하여도 그와 듣는다.</p>
 				<p class="text-black">생생하며, 그들에게 그들은 공자는 소담스러운 앞이 아니한 너의 것이다. 이것이야말로 뜨거운지라, 자신과 만천하의 못하다 우는 풍부하게 있으랴?</p>
 	    		<hr class="short">
-            	<p><a href="/introduceFizyme?board_no=0" ><font  style="color:#ffa84b;">Read more</font></a></p>
+            	<p><a href="/introduceFizyme?board_no=0" ><font  style="color:#ffa84b;">자세히보기</font></a></p>
 	          </div>
 	       
           <div class="col-md-1"></div>
@@ -121,7 +121,7 @@
             <p>이제 당신은 시와 패, 마디씩 불러 너무나 하나에 까닭입니다. 별이 불러 아무 책상을 겨울이 벌써 거외다. 가을로 이제 헤일 까닭이요, 아무 봅니다.</p>
             <p>시와 밤이 애기 이런 버리었습니다. 애기 않은 묻힌 하나에 멀리 나는 까닭입니다.</p>
             <hr class="short">
-            <p><a href="/introduceFizyme?board_no=0" ><font  style="color:#ffa84b;">Read more</font></a></p>
+            <p><a href="/introduceFizyme?board_no=0" ><font  style="color:#ffa84b;">자세히보기</font></a></p>
           </div>
           
         </div>
@@ -138,7 +138,7 @@
 				<p class="text-black">하였으며, 산야에 천지는 관현악이며, 부패뿐이다. 우는 스며들어 방황하여도, 유소년에게서 현저하게 때에, 봄바람이다. 꾸며 하여도 그와 듣는다.</p>
 				<p class="text-black">생생하며, 그들에게 그들은 공자는 소담스러운 앞이 아니한 너의 것이다. 이것이야말로 뜨거운지라, 자신과 만천하의 못하다 우는 풍부하게 있으랴?</p>
 	    		<hr class="short">
-            	<p><a href="/introduceFizyme?board_no=0" ><font  style="color:#ffa84b;">Read more</font></a></p>
+            	<p><a href="/introduceFizyme?board_no=0" ><font  style="color:#ffa84b;">자세히보기</font></a></p>
 	          </div>
 	       
           <div class="col-md-1"></div>
@@ -176,7 +176,7 @@
             <p>이제 당신은 시와 패, 마디씩 불러 너무나 하나에 까닭입니다. 별이 불러 아무 책상을 겨울이 벌써 거외다. 가을로 이제 헤일 까닭이요, 아무 봅니다.</p>
             <p>시와 밤이 애기 이런 버리었습니다. 애기 않은 묻힌 하나에 멀리 나는 까닭입니다.</p>
             <hr class="short">
-            <p><a href="/introduceFizyme?board_no=0" ><font  style="color:#ffa84b;">Read more</font></a></p>
+            <p><a href="/introduceFizyme?board_no=0" ><font  style="color:#ffa84b;">자세히보기</font></a></p>
           </div>
           
         </div>
@@ -193,7 +193,7 @@
 				<p class="text-black">하였으며, 산야에 천지는 관현악이며, 부패뿐이다. 우는 스며들어 방황하여도, 유소년에게서 현저하게 때에, 봄바람이다. 꾸며 하여도 그와 듣는다.</p>
 				<p class="text-black">생생하며, 그들에게 그들은 공자는 소담스러운 앞이 아니한 너의 것이다. 이것이야말로 뜨거운지라, 자신과 만천하의 못하다 우는 풍부하게 있으랴?</p>
 	    		<hr class="short">
-            	<p><a href="/introduceFizyme?board_no=0" ><font  style="color:#ffa84b;">Read more</font></a></p>
+            	<p><a href="/introduceFizyme?board_no=0" ><font  style="color:#ffa84b;">자세히보기</font></a></p>
 	          </div>
 	       
           <div class="col-md-1"></div>
@@ -231,7 +231,7 @@
             <p>이제 당신은 시와 패, 마디씩 불러 너무나 하나에 까닭입니다. 별이 불러 아무 책상을 겨울이 벌써 거외다. 가을로 이제 헤일 까닭이요, 아무 봅니다.</p>
             <p>시와 밤이 애기 이런 버리었습니다. 애기 않은 묻힌 하나에 멀리 나는 까닭입니다.</p>
             <hr class="short">
-            <p><a href="/introduceFizyme?board_no=0" ><font  style="color:#ffa84b;">Read more</font></a></p>
+            <p><a href="/introduceFizyme?board_no=0" ><font  style="color:#ffa84b;">자세히보기</font></a></p>
           </div>
           
         </div>
@@ -250,22 +250,19 @@
 	              <span class="icon-user"></span>
 	            </div>
 	            <div class="text">
-	              <h2>CS center</h2>
-	              <span>070-5022-7879</span><br>
-	              <span class="cscenter">Email</span> <span>jjangfeela@naver.com</span><br>
-	               카카오톡 <span>jjangfeela</span><br>
-	               상담시간 : <span>월요일~금요일 10:00 ~ 17:00</span><br>
+	              <h2>고객센터</h2>
+	              <span class="icon-phone"> 070-5022-7879</span><br>
+	              <span class="cscenter icon-envelope-o"> jjangfeela@naver.com</span><br>
+	              <span class="icon-commenting-o"> 친구추가 문의 ID : jjangfeela</span><br>
+	               업무시간 : <span>월요일~금요일 10:00 ~ 17:00</span><br>
 	            </div>
 	          </div>
 	          
 	          <!-- Notice -->
 	          <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4" data-aos="fade-up" data-aos-delay="100">
-	            <div style="margin:auto;">
-	            <div class="icon mr-4 align-self-start" style="float:left">
-	              <span class="icon-notifications_none"></span>
-	            </div>
+	            
 	            <div class="text" style="float:right">
-	              <h2>Notice</h2>
+	              <h2>견적문의</h2>
 	              	<c:if test="${not empty noticeList}">
 	   					<c:forEach var="node" items="${noticeList }">
 						<p><a href="/noticeBoardView?board_no=${node.board_no }" style="color:#8c92a0 !important; font-weight:bold; ">${node.subject}</a></p>
@@ -275,12 +272,14 @@
 						<p> Notice is empty</p>
 					</c:if>
 					<hr>
-					<a href="/customer/noticeBoardList">Read more</a>
+					<a href="/customer/noticeBoardList">자세히보기</a>
 	            </div>
-	            </div>
+	           
 	          </div>
 	          
-	          <!-- FAQ -->
+	          
+	          
+	        <%--   <!-- FAQ -->
 	          <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4" data-aos="fade-up" data-aos-delay="200">
 	            <div style="margin: auto">
 	            <div class="icon mr-4 align-self-start" style="float:left">
@@ -299,10 +298,10 @@
 						<p>&nbsp;</p>
 					</c:if>
 					<hr>
-					<a href="/customer/faqBoardList">Read more</a>
+					<a href="/customer/faqBoardList">자세히보기</a>
 	            </div>
 	          </div>
-	          </div>
+	          </div> --%>
 	        </div>
 	      </div>
     	</div>

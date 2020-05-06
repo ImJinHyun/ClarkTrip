@@ -282,7 +282,7 @@ zu Zulu
         <div class="d-flex align-items-center justify-content-between">
           <div class="logo">
             <div class="site-logo">
-              <a href="/"><img src="/images/aurance/top_logo.png" style="width:100px; height:100px;"></a>
+              <a href="/"><img src="/images/clarktrip/top_logo.png" style="width:240px; height:115px;"></a>
             </div>
           </div>
           <div class="main-nav d-none d-lg-block">
@@ -290,7 +290,7 @@ zu Zulu
               <ul class="site-menu js-clone-nav d-none d-lg-block">
               
               	<li class="site-menu">
-                  <a href="#">회사소개</a>
+                  <a href="/company/CEO">회사소개</a>
                   <!-- <ul class="dropdown">
                     <li><a href="/company/CEO">CEO Greeting</a></li>
                     <li><a href="/company/Executive">Executive</a></li>
@@ -299,7 +299,7 @@ zu Zulu
                 </li>
                  
               	<li class="site-menu">
-                  <a href="#">이용후기</a>
+                  <a href="/community/afterBoardList">이용후기</a>
                   <!-- <ul class="dropdown">
                     <li><a href="/introduceFizyme?board_no=0">FI-ZYME</a></li>
                     <li><a href="/introduceFizyme?board_no=1">FERMENTED RED GINSENG</a></li>
@@ -308,7 +308,7 @@ zu Zulu
                 </li>
                 
                 <li class="site-menu">
-                  <a href="#">견적문의</a>
+                  <a href="/Estimate">견적문의</a>
                  <!--  <ul class="dropdown">
                     <li><a href="/community/newsBoardList">News</a></li>
                     <li><a href="/community/afterBoardList">Product Reviews</a></li>
@@ -347,7 +347,7 @@ zu Zulu
           </div>
           
           <div class="icons">
-            <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
+            <!-- <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a> -->
             <c:if test="${empty login }">
             <a href="#" class="icons-btn d-inline-block bag" data-toggle="modal" data-target="#myModal">
               <button type="button" class="btn btn-success">Login</button>

@@ -12,7 +12,7 @@
     </select>
     
     <insert id="joinProcess" parameterType="java.util.HashMap">
-    INSERT INTO aurance_user (
+    INSERT INTO bro_user (
     USERID
 	, userNm
 	, USERPW
@@ -34,12 +34,12 @@
     </insert>
 	  
 	<select id="idCheck" resultType="java.lang.Integer" parameterType="java.util.HashMap">
-	    	SELECT count(*) FROM aurance_user
+	    	SELECT count(*) FROM bro_user
 	    	WHERE USERID = #{userId}
     </select>
 	    
    	<select id="telCheck" resultType="java.lang.Integer" parameterType="java.util.HashMap">
-	 	SELECT count(*) FROM aurance_user
+	 	SELECT count(*) FROM bro_user
 	   	WHERE tel = #{tel}
 	</select>
 </mapper>

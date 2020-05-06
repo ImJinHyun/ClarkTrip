@@ -7,12 +7,12 @@
     </select>
     
     <select id="selectAuranceUser" parameterType="String" resultType="com.clark.web.model.User">
-    	SELECT * FROM aurance_user
+    	SELECT * FROM bro_user
     	WHERE USERID = #{userId}
     </select>
     
     <update id="updateAuranceLogin" parameterType="com.clark.web.model.User">
-    	UPDATE aurance_user SET
+    	UPDATE bro_user SET
     	LASTLOGIN = #{lastLoginDt}	
     	WHERE USERID = #{userId}
     </update>

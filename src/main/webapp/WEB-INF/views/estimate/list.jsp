@@ -13,8 +13,8 @@
 	            <div class="site-section-heading pt-3 mb-4">
 	              <img src="" style="max-width:100%"/>
 	            </div>
-	            <h1>이용후기</h1>
-	            <p class="text-black"><a href="/" style="">Home</a>&nbsp;&nbsp;<span class="icon-chevron-right" style="font-size:10px"></span>&nbsp;&nbsp;이용후기</p>
+	            <h1>견적문의</h1>
+	            <p class="text-black"><a href="/" style="">Home</a>&nbsp;&nbsp;<span class="icon-chevron-right" style="font-size:10px"></span>&nbsp;&nbsp;견적문의</p>
 	    		
 	          </div>
 	        </div>
@@ -23,7 +23,7 @@
 
 <div class="site-section custom-border-bottom" data-aos="fade" >
 	      <div class="container">
-			<h2>이용후기</h2>
+			<h2>견적문의</h2>
 			  <p></p>            
 			  <table class="table table-hover">
 			    <thead>

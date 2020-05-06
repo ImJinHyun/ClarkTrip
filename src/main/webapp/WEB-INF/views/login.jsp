@@ -88,18 +88,18 @@ function getParam(name) {
 </head>
 <body>
 <div class="login-form">
-        <h2 class="text-center">Login</h2>   
+        <h2 class="text-center">로그인</h2>   
         <div class="form-group has-error">
-        	<input type="text" class="form-control" name="loginId" placeholder="Username" required="required" id="loginId">
+        	<input type="text" class="form-control" name="loginId" placeholder="Id" required="required" id="loginId">
         </div>
 		<div class="form-group">
             <input type="password" class="form-control" name="userPw" placeholder="Password" required="required" id="userPw">
         </div>        
         <div class="form-group">
-            <button type="button" onclick="doLogin()" class="btn btn-primary btn-lg btn-block">Sign in</button>
+            <button type="button" onclick="doLogin()" class="btn btn-primary btn-lg btn-block">로그인</button>
         </div>
         <!-- <p><a href="#">Lost your Password?</a></p>  -->
-    <p class="text-center small">Don't have an account? <a href="/en/member/join">Sign up here!</a></p>
+    <p class="text-center small">방문이 처음이신가요? <a href="/member/join"> 회원가입 하러가기</a></p>
 </div>
 
  <script type="text/javascript">
